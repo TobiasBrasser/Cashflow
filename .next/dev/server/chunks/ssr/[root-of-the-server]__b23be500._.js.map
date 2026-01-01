@@ -1,0 +1,6 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 4, "column": 0}, "map": {"version":3,"sources":["file:///Users/tobiasbrasser/Projects/Cashflow/src/pages/index.jsx"],"sourcesContent":["export default function Home() {\n  return (\n    <>\n      <h1>Monatsübersicht</h1>\n      <p className=\"text-muted\">\n        Behalte deine Einnahmen und Ausgaben im Überblick.\n      </p>\n\n      <div className=\"alert alert-info\">\n        Diagramme und Zusammenfassungen folgen hier.\n      </div>\n    </>\n  )\n}"],"names":[],"mappings":";;;;;;AAAe,SAAS;IACtB,qBACE;;0BACE,qKAAC;0BAAG;;;;;;0BACJ,qKAAC;gBAAE,WAAU;0BAAa;;;;;;0BAI1B,qKAAC;gBAAI,WAAU;0BAAmB;;;;;;;;AAKxC"}}]
+}
