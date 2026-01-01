@@ -1,68 +1,49 @@
 import { useState } from 'react'
 import ModalDialog from './ModalDialog'
 
-export default function CreateTransactionModal({ onSave }) {
-  const [showModal, setShowModal] = useState(false)
-  const [transactionType, setTransactionType] = useState(null)
-
-  const [title, setTitle] = useState('')
-  const [description, setDescription] = useState('')
-  const [amount, setAmount] = useState('')
+export default function CreateTransactionModal({ onSave, editData, onClose }) {
+  const [showModal, setShowModal] = useState(!!editData)
+  const [transactionType, setTransactionType] = useState(editData?.type || null)
+  const [title, setTitle] = useState(editData?.title || '')
+  const [description, setDescription] = useState(editData?.description || '')
+  const [amount, setAmount] = useState(editData?.amount || '')
 
   const openModal = (type) => {
     setTransactionType(type)
     setShowModal(true)
   }
 
-  const closeModal = () => {
+  const closeModalInternal = () => {
     setShowModal(false)
     setTransactionType(null)
-    resetForm()
-  }
-
-  const resetForm = () => {
     setTitle('')
     setDescription('')
     setAmount('')
+    onClose?.()
   }
 
   const handleSave = () => {
-    onSave({
-      type: transactionType,
-      title,
-      description,
-      amount: Number(amount)
-    })
-
-    closeModal()
+    onSave({ type: transactionType, title, description, amount: Number(amount) })
+    closeModalInternal()
   }
 
   return (
     <>
-      <div className="d-flex gap-2 mb-4">
-        <button
-          className="btn btn-success"
-          onClick={() => openModal('income')}
-        >
-          Einnahme erfassen
-        </button>
-
-        <button
-          className="btn btn-danger"
-          onClick={() => openModal('expense')}
-        >
-          Ausgabe erfassen
-        </button>
-      </div>
+      {!editData && (
+        <div className="d-flex gap-2 mb-4">
+          <button className="btn btn-success" onClick={() => openModal('income')}>
+            Einnahme erfassen
+          </button>
+          <button className="btn btn-danger" onClick={() => openModal('expense')}>
+            Ausgabe erfassen
+          </button>
+        </div>
+      )}
 
       <ModalDialog
-        title={
-          transactionType === 'income'
-            ? 'Neue Einnahme'
-            : 'Neue Ausgabe'
-        }
+        title={transactionType === 'income' ? 'Einnahme' : 'Ausgabe'}
         show={showModal}
-        onClose={closeModal}
+        onClose={closeModalInternal}
       >
         <form onSubmit={(e) => e.preventDefault()}>
           <div className="mb-3">
@@ -99,7 +80,7 @@ export default function CreateTransactionModal({ onSave }) {
             <button
               type="button"
               className="btn btn-secondary"
-              onClick={closeModal}
+              onClick={closeModalInternal}
             >
               Abbrechen
             </button>
@@ -118,3 +99,4 @@ export default function CreateTransactionModal({ onSave }) {
     </>
   )
 }
+
