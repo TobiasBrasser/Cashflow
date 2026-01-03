@@ -7,6 +7,19 @@ export default function CreateTransactionModal({ onSave, editData, onClose }) {
   const [title, setTitle] = useState(editData?.title || '')
   const [description, setDescription] = useState(editData?.description || '')
   const [amount, setAmount] = useState(editData?.amount || '')
+  const [category, setCategory] = useState(editData?.category || '')
+  const [error, setError] = useState('')
+
+
+
+  const CATEGORIES = [
+    'Essen',
+    'Freizeit',
+    'Rechnungen',
+    'Transport',
+    'Shopping',
+    'Sonstiges'
+  ]
 
   const openModal = (type) => {
     setTransactionType(type)
@@ -19,11 +32,18 @@ export default function CreateTransactionModal({ onSave, editData, onClose }) {
     setTitle('')
     setDescription('')
     setAmount('')
+    setCategory('')
     onClose?.()
   }
 
   const handleSave = () => {
-    onSave({ type: transactionType, title, description, amount: Number(amount) })
+    if (!title || !amount || !category) {
+    setError('Bitte fülle alle Pflichtfelder aus (Titel, Kategorie, Betrag).')
+    return
+  }
+    setError('')
+
+    onSave({ type: transactionType, title, description, category, amount: Number(amount) })
     closeModalInternal()
   }
 
@@ -66,6 +86,22 @@ export default function CreateTransactionModal({ onSave, editData, onClose }) {
           </div>
 
           <div className="mb-3">
+            <label className="form-label">Kategorie</label>
+            <select
+              className="form-select"
+              value={category}
+              onChange={(e) => setCategory(e.target.value)}
+            >
+              <option value="">Kategorie auswählen</option>
+              {CATEGORIES.map(cat => (
+                <option key={cat} value={cat}>
+                  {cat}
+                </option>
+              ))}
+            </select>
+          </div>
+
+          <div className="mb-3">
             <label className="form-label">Betrag (CHF)</label>
             <input
               type="number"
@@ -75,7 +111,11 @@ export default function CreateTransactionModal({ onSave, editData, onClose }) {
               onChange={(e) => setAmount(e.target.value)}
             />
           </div>
-
+            {error && (
+              <div className="alert alert-danger mt-3">
+                {error}
+              </div>
+            )}
           <div className="d-flex justify-content-end gap-2">
             <button
               type="button"
@@ -89,7 +129,6 @@ export default function CreateTransactionModal({ onSave, editData, onClose }) {
               type="button"
               className="btn btn-primary"
               onClick={handleSave}
-              disabled={!title || !amount}
             >
               Speichern
             </button>
