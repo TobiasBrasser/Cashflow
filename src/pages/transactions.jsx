@@ -65,6 +65,7 @@ export default function Transactions() {
         <thead>
           <tr>
             <th>Titel</th>
+            <th>Kategorie</th>
             <th>Beschreibung</th>
             <th>Betrag (CHF)</th>
             <th>Datum</th>
@@ -75,6 +76,7 @@ export default function Transactions() {
           {incomes.map(t => (
             <tr key={t.id}>
               <td>{t.title}</td>
+              <td>{t.category || '-'}</td>
               <td>{t.description}</td>
               <td className="text-success">+ {t.amount.toFixed(2)}</td>
               <td>{new Date(t.date).toLocaleDateString()}</td>
@@ -103,6 +105,7 @@ export default function Transactions() {
         <thead>
           <tr>
             <th>Titel</th>
+            <th>Kategorie</th>
             <th>Beschreibung</th>
             <th>Betrag (CHF)</th>
             <th>Datum</th>
@@ -113,6 +116,7 @@ export default function Transactions() {
           {expenses.map(t => (
             <tr key={t.id}>
               <td>{t.title}</td>
+              <td>{t.category || '-'}</td>
               <td>{t.description}</td>
               <td className="text-danger">- {t.amount.toFixed(2)}</td>
               <td>{new Date(t.date).toLocaleDateString()}</td>
