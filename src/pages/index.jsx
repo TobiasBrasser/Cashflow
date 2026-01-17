@@ -1,4 +1,6 @@
 import { useEffect, useState } from 'react'
+import MonthlyChart from '../components/charts/MonthlyChart'
+import ExpenseCategoryChart from '../components/charts/ExpenseCategoryChart'
 
 const getMonthKey = (date) => {
   const d = new Date(date)
@@ -75,8 +77,19 @@ export default function Home() {
           })}
         </tbody>
       </table>
-      <div className="alert alert-info">
-        Diagramme und Zusammenfassungen folgen hier.
+      <div className="charts">
+        <div className="monthlyChart">
+          <h3 className="mt-5">Monatlicher Cashflow</h3>
+          <MonthlyChart monthlyData={monthlyOverview} />
+        </div>
+        <div>
+          <h3 className="mt-5">Ausgaben nach Kategorien</h3>
+          <ExpenseCategoryChart
+            className="expenseCategoryChart"
+            expenses={transactions.filter(t => t.type === 'expense')}
+            options={{ maintainAspectRatio: false, radius: '50%' }}
+          />
+        </div>
       </div>
       {transactions.length === 0 && (
         <div className="alert alert-info mt-4">

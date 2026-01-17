@@ -594,6 +594,16 @@ function CreateTransactionModal({ onSave, editData, onClose }) {
     const [title, setTitle] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$index$2e$js__$5b$client$5d$__$28$ecmascript$29$__["useState"])(editData?.title || '');
     const [description, setDescription] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$index$2e$js__$5b$client$5d$__$28$ecmascript$29$__["useState"])(editData?.description || '');
     const [amount, setAmount] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$index$2e$js__$5b$client$5d$__$28$ecmascript$29$__["useState"])(editData?.amount || '');
+    const [category, setCategory] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$index$2e$js__$5b$client$5d$__$28$ecmascript$29$__["useState"])(editData?.category || '');
+    const [error, setError] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$index$2e$js__$5b$client$5d$__$28$ecmascript$29$__["useState"])('');
+    const CATEGORIES = [
+        'Essen',
+        'Freizeit',
+        'Rechnungen',
+        'Transport',
+        'Shopping',
+        'Sonstiges'
+    ];
     const openModal = (type)=>{
         setTransactionType(type);
         setShowModal(true);
@@ -604,13 +614,20 @@ function CreateTransactionModal({ onSave, editData, onClose }) {
         setTitle('');
         setDescription('');
         setAmount('');
+        setCategory('');
         onClose?.();
     };
     const handleSave = ()=>{
+        if (!title || !amount || !category) {
+            setError('Bitte fülle alle Pflichtfelder aus (Titel, Kategorie, Betrag).');
+            return;
+        }
+        setError('');
         onSave({
             type: transactionType,
             title,
             description,
+            category,
             amount: Number(amount)
         });
         closeModalInternal();
@@ -626,7 +643,7 @@ function CreateTransactionModal({ onSave, editData, onClose }) {
                         children: "Einnahme erfassen"
                     }, void 0, false, {
                         fileName: "[project]/src/components/CreateTransactionModal.jsx",
-                        lineNumber: 34,
+                        lineNumber: 54,
                         columnNumber: 11
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -635,13 +652,13 @@ function CreateTransactionModal({ onSave, editData, onClose }) {
                         children: "Ausgabe erfassen"
                     }, void 0, false, {
                         fileName: "[project]/src/components/CreateTransactionModal.jsx",
-                        lineNumber: 37,
+                        lineNumber: 57,
                         columnNumber: 11
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/components/CreateTransactionModal.jsx",
-                lineNumber: 33,
+                lineNumber: 53,
                 columnNumber: 9
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ModalDialog$2e$jsx__$5b$client$5d$__$28$ecmascript$29$__["default"], {
@@ -659,7 +676,7 @@ function CreateTransactionModal({ onSave, editData, onClose }) {
                                     children: "Titel"
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/CreateTransactionModal.jsx",
-                                    lineNumber: 50,
+                                    lineNumber: 70,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -668,13 +685,13 @@ function CreateTransactionModal({ onSave, editData, onClose }) {
                                     onChange: (e)=>setTitle(e.target.value)
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/CreateTransactionModal.jsx",
-                                    lineNumber: 51,
+                                    lineNumber: 71,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/components/CreateTransactionModal.jsx",
-                            lineNumber: 49,
+                            lineNumber: 69,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -685,7 +702,7 @@ function CreateTransactionModal({ onSave, editData, onClose }) {
                                     children: "Beschreibung"
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/CreateTransactionModal.jsx",
-                                    lineNumber: 59,
+                                    lineNumber: 79,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("textarea", {
@@ -695,13 +712,57 @@ function CreateTransactionModal({ onSave, editData, onClose }) {
                                     onChange: (e)=>setDescription(e.target.value)
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/CreateTransactionModal.jsx",
-                                    lineNumber: 60,
+                                    lineNumber: 80,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/components/CreateTransactionModal.jsx",
-                            lineNumber: 58,
+                            lineNumber: 78,
+                            columnNumber: 11
+                        }, this),
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                            className: "mb-3",
+                            children: [
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
+                                    className: "form-label",
+                                    children: "Kategorie"
+                                }, void 0, false, {
+                                    fileName: "[project]/src/components/CreateTransactionModal.jsx",
+                                    lineNumber: 89,
+                                    columnNumber: 13
+                                }, this),
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("select", {
+                                    className: "form-select",
+                                    value: category,
+                                    onChange: (e)=>setCategory(e.target.value),
+                                    children: [
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
+                                            value: "",
+                                            children: "Kategorie auswählen"
+                                        }, void 0, false, {
+                                            fileName: "[project]/src/components/CreateTransactionModal.jsx",
+                                            lineNumber: 95,
+                                            columnNumber: 15
+                                        }, this),
+                                        CATEGORIES.map((cat)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
+                                                value: cat,
+                                                children: cat
+                                            }, cat, false, {
+                                                fileName: "[project]/src/components/CreateTransactionModal.jsx",
+                                                lineNumber: 97,
+                                                columnNumber: 17
+                                            }, this))
+                                    ]
+                                }, void 0, true, {
+                                    fileName: "[project]/src/components/CreateTransactionModal.jsx",
+                                    lineNumber: 90,
+                                    columnNumber: 13
+                                }, this)
+                            ]
+                        }, void 0, true, {
+                            fileName: "[project]/src/components/CreateTransactionModal.jsx",
+                            lineNumber: 88,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -712,7 +773,7 @@ function CreateTransactionModal({ onSave, editData, onClose }) {
                                     children: "Betrag (CHF)"
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/CreateTransactionModal.jsx",
-                                    lineNumber: 69,
+                                    lineNumber: 105,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -723,14 +784,22 @@ function CreateTransactionModal({ onSave, editData, onClose }) {
                                     onChange: (e)=>setAmount(e.target.value)
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/CreateTransactionModal.jsx",
-                                    lineNumber: 70,
+                                    lineNumber: 106,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/components/CreateTransactionModal.jsx",
-                            lineNumber: 68,
+                            lineNumber: 104,
                             columnNumber: 11
+                        }, this),
+                        error && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                            className: "alert alert-danger mt-3",
+                            children: error
+                        }, void 0, false, {
+                            fileName: "[project]/src/components/CreateTransactionModal.jsx",
+                            lineNumber: 115,
+                            columnNumber: 15
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                             className: "d-flex justify-content-end gap-2",
@@ -742,41 +811,40 @@ function CreateTransactionModal({ onSave, editData, onClose }) {
                                     children: "Abbrechen"
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/CreateTransactionModal.jsx",
-                                    lineNumber: 80,
+                                    lineNumber: 120,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
                                     type: "button",
                                     className: "btn btn-primary",
                                     onClick: handleSave,
-                                    disabled: !title || !amount,
                                     children: "Speichern"
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/CreateTransactionModal.jsx",
-                                    lineNumber: 88,
+                                    lineNumber: 128,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/components/CreateTransactionModal.jsx",
-                            lineNumber: 79,
+                            lineNumber: 119,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/src/components/CreateTransactionModal.jsx",
-                    lineNumber: 48,
+                    lineNumber: 68,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/src/components/CreateTransactionModal.jsx",
-                lineNumber: 43,
+                lineNumber: 63,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true);
 }
-_s(CreateTransactionModal, "1/HNkODycmDWrLgSadvjNLPFhwA=");
+_s(CreateTransactionModal, "uPbB2UCpxYJaOLbfD7H2LrV5sIQ=");
 _c = CreateTransactionModal;
 var _c;
 __turbopack_context__.k.register(_c, "CreateTransactionModal");
@@ -885,31 +953,38 @@ function Transactions() {
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
-                                    children: "Beschreibung"
+                                    children: "Kategorie"
                                 }, void 0, false, {
                                     fileName: "[project]/src/pages/transactions.jsx",
                                     lineNumber: 68,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
-                                    children: "Betrag (CHF)"
+                                    children: "Beschreibung"
                                 }, void 0, false, {
                                     fileName: "[project]/src/pages/transactions.jsx",
                                     lineNumber: 69,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
-                                    children: "Datum"
+                                    children: "Betrag (CHF)"
                                 }, void 0, false, {
                                     fileName: "[project]/src/pages/transactions.jsx",
                                     lineNumber: 70,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
-                                    children: "Aktionen"
+                                    children: "Datum"
                                 }, void 0, false, {
                                     fileName: "[project]/src/pages/transactions.jsx",
                                     lineNumber: 71,
+                                    columnNumber: 13
+                                }, this),
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
+                                    children: "Aktionen"
+                                }, void 0, false, {
+                                    fileName: "[project]/src/pages/transactions.jsx",
+                                    lineNumber: 72,
                                     columnNumber: 13
                                 }, this)
                             ]
@@ -930,14 +1005,21 @@ function Transactions() {
                                         children: t.title
                                     }, void 0, false, {
                                         fileName: "[project]/src/pages/transactions.jsx",
-                                        lineNumber: 77,
+                                        lineNumber: 78,
+                                        columnNumber: 15
+                                    }, this),
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
+                                        children: t.category || '-'
+                                    }, void 0, false, {
+                                        fileName: "[project]/src/pages/transactions.jsx",
+                                        lineNumber: 79,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
                                         children: t.description
                                     }, void 0, false, {
                                         fileName: "[project]/src/pages/transactions.jsx",
-                                        lineNumber: 78,
+                                        lineNumber: 80,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -948,14 +1030,14 @@ function Transactions() {
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/pages/transactions.jsx",
-                                        lineNumber: 79,
+                                        lineNumber: 81,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
                                         children: new Date(t.date).toLocaleDateString()
                                     }, void 0, false, {
                                         fileName: "[project]/src/pages/transactions.jsx",
-                                        lineNumber: 80,
+                                        lineNumber: 82,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -965,12 +1047,12 @@ function Transactions() {
                                                 onClick: ()=>setEditTransaction(t),
                                                 children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$icons$2d$material$2f$esm$2f$Edit$2e$js__$5b$client$5d$__$28$ecmascript$29$__["default"], {}, void 0, false, {
                                                     fileName: "[project]/src/pages/transactions.jsx",
-                                                    lineNumber: 86,
+                                                    lineNumber: 88,
                                                     columnNumber: 19
                                                 }, this)
                                             }, void 0, false, {
                                                 fileName: "[project]/src/pages/transactions.jsx",
-                                                lineNumber: 82,
+                                                lineNumber: 84,
                                                 columnNumber: 17
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$esm$2f$IconButton$2f$IconButton$2e$js__$5b$client$5d$__$28$ecmascript$29$__$3c$export__default__as__IconButton$3e$__["IconButton"], {
@@ -978,29 +1060,29 @@ function Transactions() {
                                                 onClick: ()=>deleteTransaction(t.id),
                                                 children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$icons$2d$material$2f$esm$2f$Delete$2e$js__$5b$client$5d$__$28$ecmascript$29$__["default"], {}, void 0, false, {
                                                     fileName: "[project]/src/pages/transactions.jsx",
-                                                    lineNumber: 92,
+                                                    lineNumber: 94,
                                                     columnNumber: 19
                                                 }, this)
                                             }, void 0, false, {
                                                 fileName: "[project]/src/pages/transactions.jsx",
-                                                lineNumber: 88,
+                                                lineNumber: 90,
                                                 columnNumber: 17
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/pages/transactions.jsx",
-                                        lineNumber: 81,
+                                        lineNumber: 83,
                                         columnNumber: 15
                                     }, this)
                                 ]
                             }, t.id, true, {
                                 fileName: "[project]/src/pages/transactions.jsx",
-                                lineNumber: 76,
+                                lineNumber: 77,
                                 columnNumber: 13
                             }, this))
                     }, void 0, false, {
                         fileName: "[project]/src/pages/transactions.jsx",
-                        lineNumber: 74,
+                        lineNumber: 75,
                         columnNumber: 9
                     }, this)
                 ]
@@ -1013,7 +1095,7 @@ function Transactions() {
                 children: "Ausgaben"
             }, void 0, false, {
                 fileName: "[project]/src/pages/transactions.jsx",
-                lineNumber: 101,
+                lineNumber: 103,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("table", {
@@ -1026,46 +1108,53 @@ function Transactions() {
                                     children: "Titel"
                                 }, void 0, false, {
                                     fileName: "[project]/src/pages/transactions.jsx",
-                                    lineNumber: 105,
-                                    columnNumber: 13
-                                }, this),
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
-                                    children: "Beschreibung"
-                                }, void 0, false, {
-                                    fileName: "[project]/src/pages/transactions.jsx",
-                                    lineNumber: 106,
-                                    columnNumber: 13
-                                }, this),
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
-                                    children: "Betrag (CHF)"
-                                }, void 0, false, {
-                                    fileName: "[project]/src/pages/transactions.jsx",
                                     lineNumber: 107,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
-                                    children: "Datum"
+                                    children: "Kategorie"
                                 }, void 0, false, {
                                     fileName: "[project]/src/pages/transactions.jsx",
                                     lineNumber: 108,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
-                                    children: "Aktionen"
+                                    children: "Beschreibung"
                                 }, void 0, false, {
                                     fileName: "[project]/src/pages/transactions.jsx",
                                     lineNumber: 109,
+                                    columnNumber: 13
+                                }, this),
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
+                                    children: "Betrag (CHF)"
+                                }, void 0, false, {
+                                    fileName: "[project]/src/pages/transactions.jsx",
+                                    lineNumber: 110,
+                                    columnNumber: 13
+                                }, this),
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
+                                    children: "Datum"
+                                }, void 0, false, {
+                                    fileName: "[project]/src/pages/transactions.jsx",
+                                    lineNumber: 111,
+                                    columnNumber: 13
+                                }, this),
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
+                                    children: "Aktionen"
+                                }, void 0, false, {
+                                    fileName: "[project]/src/pages/transactions.jsx",
+                                    lineNumber: 112,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/pages/transactions.jsx",
-                            lineNumber: 104,
+                            lineNumber: 106,
                             columnNumber: 11
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/src/pages/transactions.jsx",
-                        lineNumber: 103,
+                        lineNumber: 105,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tbody", {
@@ -1075,14 +1164,21 @@ function Transactions() {
                                         children: t.title
                                     }, void 0, false, {
                                         fileName: "[project]/src/pages/transactions.jsx",
-                                        lineNumber: 115,
+                                        lineNumber: 118,
+                                        columnNumber: 15
+                                    }, this),
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
+                                        children: t.category || '-'
+                                    }, void 0, false, {
+                                        fileName: "[project]/src/pages/transactions.jsx",
+                                        lineNumber: 119,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
                                         children: t.description
                                     }, void 0, false, {
                                         fileName: "[project]/src/pages/transactions.jsx",
-                                        lineNumber: 116,
+                                        lineNumber: 120,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -1093,14 +1189,14 @@ function Transactions() {
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/pages/transactions.jsx",
-                                        lineNumber: 117,
+                                        lineNumber: 121,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
                                         children: new Date(t.date).toLocaleDateString()
                                     }, void 0, false, {
                                         fileName: "[project]/src/pages/transactions.jsx",
-                                        lineNumber: 118,
+                                        lineNumber: 122,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -1110,12 +1206,12 @@ function Transactions() {
                                                 onClick: ()=>setEditTransaction(t),
                                                 children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$icons$2d$material$2f$esm$2f$Edit$2e$js__$5b$client$5d$__$28$ecmascript$29$__["default"], {}, void 0, false, {
                                                     fileName: "[project]/src/pages/transactions.jsx",
-                                                    lineNumber: 124,
+                                                    lineNumber: 128,
                                                     columnNumber: 19
                                                 }, this)
                                             }, void 0, false, {
                                                 fileName: "[project]/src/pages/transactions.jsx",
-                                                lineNumber: 120,
+                                                lineNumber: 124,
                                                 columnNumber: 17
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$esm$2f$IconButton$2f$IconButton$2e$js__$5b$client$5d$__$28$ecmascript$29$__$3c$export__default__as__IconButton$3e$__["IconButton"], {
@@ -1123,35 +1219,35 @@ function Transactions() {
                                                 onClick: ()=>deleteTransaction(t.id),
                                                 children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$icons$2d$material$2f$esm$2f$Delete$2e$js__$5b$client$5d$__$28$ecmascript$29$__["default"], {}, void 0, false, {
                                                     fileName: "[project]/src/pages/transactions.jsx",
-                                                    lineNumber: 130,
+                                                    lineNumber: 134,
                                                     columnNumber: 19
                                                 }, this)
                                             }, void 0, false, {
                                                 fileName: "[project]/src/pages/transactions.jsx",
-                                                lineNumber: 126,
+                                                lineNumber: 130,
                                                 columnNumber: 17
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/pages/transactions.jsx",
-                                        lineNumber: 119,
+                                        lineNumber: 123,
                                         columnNumber: 15
                                     }, this)
                                 ]
                             }, t.id, true, {
                                 fileName: "[project]/src/pages/transactions.jsx",
-                                lineNumber: 114,
+                                lineNumber: 117,
                                 columnNumber: 13
                             }, this))
                     }, void 0, false, {
                         fileName: "[project]/src/pages/transactions.jsx",
-                        lineNumber: 112,
+                        lineNumber: 115,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/pages/transactions.jsx",
-                lineNumber: 102,
+                lineNumber: 104,
                 columnNumber: 7
             }, this)
         ]

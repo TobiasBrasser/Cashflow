@@ -13340,6 +13340,24 @@ textarea.form-control-lg {
 }
 
 /* [project]/src/styles/globals.css [client] (css) */
+.charts {
+  flex-direction: row;
+  justify-content: space-around;
+  display: flex;
+}
 
+.monthlyChart {
+  flex-direction: column;
+  gap: 1rem;
+  width: 40%;
+  display: flex;
+}
+
+.expenseCategoryChart {
+  flex-direction: column;
+  gap: 1rem;
+  width: 25%;
+  display: flex;
+}
 
 /*# sourceMappingURL=_c0e86af6._.css.map*/
