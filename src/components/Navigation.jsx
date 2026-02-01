@@ -2,7 +2,7 @@ import Link from 'next/link';
 
 export default function Navigation({ theme, onToggleTheme }) {
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav className="navbar navbar-expand-lg">
       <div className="container">
         <Link className="navbar-brand" href="/">
           CashFlowr
@@ -21,14 +21,14 @@ export default function Navigation({ theme, onToggleTheme }) {
               </Link>
             </li>
           </ul>
+          <button
+            className="btn btn-outline-light btn-sm"
+            onClick={onToggleTheme}
+          >
+            {theme === 'light' ? '🌙 Dark' : '☀️ Light'}
+          </button>
         </div>
-        <button
-          className="btn btn-outline-light btn-sm"
-          onClick={onToggleTheme}
-        >
-          {theme === 'light' ? '🌙 Dark' : '☀️ Light'}
-        </button>
       </div>
     </nav>
-  )
+  );
 }

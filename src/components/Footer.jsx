@@ -1,6 +1,6 @@
-export default function Footer() {
+export default function Footer({ theme, onToggleTheme }) {
   return (
-    <footer className="bg-light text-center text-muted py-3 mt-auto">
+    <footer className="text-center py-3 mt-auto footer">
       <small>
         © {new Date().getFullYear()} CashFlowr · Budget Management App
       </small>

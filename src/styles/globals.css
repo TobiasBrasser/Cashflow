@@ -1,3 +1,84 @@
+:root {
+  --bg-color: #f8f9fa;
+  --text-color: #212529;
+  --card-bg: #ffffff;
+  --border-color: #dee2e6;
+  --table-bg: #ffffff;
+  --muted-text: #6c757d;
+}
+
+[data-theme="dark"] {
+  --bg-color: #2d2d30;
+  --text-color: #e9ecef;
+  --card-bg: #1e1e1e;
+  --border-color: #2c2c2c;
+  --table-bg: rgb(33 37 41);
+  --muted-text: #adb5bd;
+}
+
+[data-theme="dark"] .alert-info {
+  background-color: #1c2a33;
+  color: #e9ecef;
+  border-color: #0dcaf0;
+}
+
+[data-theme="dark"] .alert-danger {
+  background-color: #2a1c1c;
+  color: #f8d7da;
+  border-color: #dc3545;
+}
+
+[data-theme="dark"] .MuiIconButton-root {
+  color: var(--text-color);
+}
+
+[data-theme="dark"] .MuiIconButton-colorPrimary {
+  color: #4dabf7;
+}
+
+[data-theme="dark"] .MuiIconButton-colorError {
+  color: #ff6b6b;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+}
+
+nav {
+  background-color: var(--table-bg);
+  color: var(--text-color);
+}
+
+nav .navbar-brand,
+nav .nav-link {
+  color: var(--text-color);
+}
+
+nav .nav-link:hover {
+  color: var(--muted-text);
+}
+
+nav .btn-outline-light {
+  background-color: transparent;
+  color: var(--text-color);
+  border: none;
+}
+
+nav .btn-outline-light:hover {
+  background-color: grey;
+  color: var(--bg-color);
+}
+
+.monthly-overview-text{
+  color: var(--text-color);
+}
+
+.footer {
+  background-color: var(--table-bg);
+  color: var(--text-color);
+}
+
 .charts {
     display: flex;
     flex-direction: row;
@@ -34,14 +115,6 @@
   overflow-x: visible;
 }
 
-
-@media (max-width: 768px) {
-  .col-secondary {
-    display: none;
-  }
-}
-
-
 .responsive-table th:first-child,
 .responsive-table td:first-child {
   position: static;
@@ -74,85 +147,17 @@
   width: 180px;
 }
 
-
-@media (min-width: 992px) {
-
-  /* Linke Spalte (Titel) */
-  .responsive-table th:first-child,
-  .responsive-table td:first-child {
-    position: sticky;
-    left: 0;
-    background-color: var(--table-bg);
-    z-index: 2;
-  }
-
-  /* Rechte Spalte (Aktionen) */
-  .responsive-table th:last-child,
-  .responsive-table td:last-child {
-    position: sticky;
-    right: 0;
-    background-color: var(--table-bg);
-    z-index: 2;
-    text-align: center;
-    white-space: nowrap;
-  }
-
-  /* Header über Body */
-  .responsive-table thead th:first-child,
-  .responsive-table thead th:last-child {
-    z-index: 3;
-  }
-}
-:root {
-  --bg-color: #f8f9fa;
-  --text-color: #212529;
-  --card-bg: #ffffff;
-  --border-color: #dee2e6;
-  --table-bg: #ffffff;
-  --muted-text: #6c757d;
-}
-
-[data-theme="dark"] {
-  --bg-color: #121212;
-  --text-color: #e9ecef;
-  --card-bg: #1e1e1e;
-  --border-color: #2c2c2c;
-  --table-bg: #1e1e1e;
-  --muted-text: #adb5bd;
-}
-
-[data-theme="dark"] .alert-info {
-  background-color: #1c2a33;
-  color: #e9ecef;
-  border-color: #0dcaf0;
-}
-
-[data-theme="dark"] .alert-danger {
-  background-color: #2a1c1c;
-  color: #f8d7da;
-  border-color: #dc3545;
-}
-
-[data-theme="dark"] .MuiIconButton-root {
-  color: var(--text-color);
-}
-
-[data-theme="dark"] .MuiIconButton-colorPrimary {
-  color: #4dabf7;
-}
-
-[data-theme="dark"] .MuiIconButton-colorError {
-  color: #ff6b6b;
-}
-
-body {
-  background-color: var(--bg-color);
-  color: var(--text-color);
-}
-
 .card {
   background-color: var(--card-bg);
   border-color: var(--border-color);
+}
+
+.card-title {
+  color: var(--text-color);
+}
+
+.card-text{
+  color: var(--text-color);
 }
 
 .table > :not(caption) > * > *  {
@@ -163,10 +168,6 @@ body {
 .table th,
 .table td {
   border-color: var(--border-color);
-}
-
-.text-muted {
-  color: var(--muted-text) !important;
 }
 
 .modal-content {
@@ -203,5 +204,36 @@ body {
   .responsive-table th:first-child,
   .responsive-table td:first-child {
     background: var(--table-bg);
+  }
+}
+
+@media (max-width: 768px) {
+  .col-secondary {
+    display: none;
+  }
+}
+
+@media (min-width: 992px) {
+  .responsive-table th:first-child,
+  .responsive-table td:first-child {
+    position: sticky;
+    left: 0;
+    background-color: var(--table-bg);
+    z-index: 2;
+  }
+
+  .responsive-table th:last-child,
+  .responsive-table td:last-child {
+    position: sticky;
+    right: 0;
+    background-color: var(--table-bg);
+    z-index: 2;
+    text-align: center;
+    white-space: nowrap;
+  }
+
+  .responsive-table thead th:first-child,
+  .responsive-table thead th:last-child {
+    z-index: 3;
   }
 }

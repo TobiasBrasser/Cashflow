@@ -533,7 +533,7 @@ function Home() {
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                className: "text-muted",
+                className: "monthly-overview-text",
                 children: "Behalte deine Einnahmen und Ausgaben im Überblick."
             }, void 0, false, {
                 fileName: "[project]/src/pages/index.jsx",
@@ -575,7 +575,7 @@ function Home() {
                                     columnNumber: 13
                                 }, this),
                                 currentMonthData && budget > 0 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                    className: "col-md-8 mt-3 mt-md-0",
+                                    className: "card-text col-md-8 mt-3 mt-md-0",
                                     children: [
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("strong", {
                                             children: "Einnahmen:"
@@ -813,20 +813,12 @@ function Home() {
                 lineNumber: 109,
                 columnNumber: 7
             }, this),
-            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                className: "alert alert-info",
-                children: "Diagramme und Zusammenfassungen folgen hier."
-            }, void 0, false, {
-                fileName: "[project]/src/pages/index.jsx",
-                lineNumber: 157,
-                columnNumber: 7
-            }, this),
             transactions.length === 0 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                 className: "alert alert-info mt-4",
                 children: "Noch keine Transaktionen vorhanden."
             }, void 0, false, {
                 fileName: "[project]/src/pages/index.jsx",
-                lineNumber: 162,
+                lineNumber: 159,
                 columnNumber: 9
             }, this)
         ]

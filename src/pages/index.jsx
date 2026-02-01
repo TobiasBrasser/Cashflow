@@ -54,7 +54,7 @@ export default function Home() {
   return (
     <>
       <h1>Monatsübersicht</h1>
-      <p className="text-muted">
+      <p className="monthly-overview-text">
         Behalte deine Einnahmen und Ausgaben im Überblick.
       </p>
 
@@ -73,7 +73,7 @@ export default function Home() {
             </div>
 
             {currentMonthData && budget > 0 && (
-              <div className="col-md-8 mt-3 mt-md-0">
+              <div className="card-text col-md-8 mt-3 mt-md-0">
                 <strong>Einnahmen:</strong>{' '}
                 <span className="text-success">
                   {currentMonthData.income.toFixed(2)} CHF
@@ -153,9 +153,6 @@ export default function Home() {
           })}
         </tbody>
       </table>
-      </div>
-      <div className="alert alert-info">
-        Diagramme und Zusammenfassungen folgen hier.
       </div>
 
       {transactions.length === 0 && (
