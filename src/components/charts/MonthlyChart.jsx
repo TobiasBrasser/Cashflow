@@ -16,8 +16,15 @@ ChartJS.register(
   Legend
 )
 
+const getCSSVar = (name) =>
+  getComputedStyle(document.documentElement).getPropertyValue(name).trim()
+
 export default function MonthlyChart({ monthlyData }) {
   const labels = Object.keys(monthlyData)
+  if (labels.length === 0) return null
+
+  const textColor = getCSSVar('--text-color')
+  const borderColor = getCSSVar('--border-color')
 
   const data = {
     labels,
@@ -25,15 +32,36 @@ export default function MonthlyChart({ monthlyData }) {
       {
         label: 'Einnahmen',
         data: labels.map(m => monthlyData[m].income),
-        backgroundColor: 'rgba(25, 135, 84, 0.7)'
+        backgroundColor: 'rgba(25, 135, 84, 0.75)'
       },
       {
         label: 'Ausgaben',
         data: labels.map(m => monthlyData[m].expense),
-        backgroundColor: 'rgba(220, 53, 69, 0.7)'
+        backgroundColor: 'rgba(220, 53, 69, 0.75)'
       }
     ]
   }
 
-  return <Bar data={data} />
+  const options = {
+    responsive: true,
+    plugins: {
+      legend: {
+        labels: {
+          color: textColor
+        }
+      }
+    },
+    scales: {
+      x: {
+        ticks: { color: textColor },
+        grid: { color: borderColor }
+      },
+      y: {
+        ticks: { color: textColor },
+        grid: { color: borderColor }
+      }
+    }
+  }
+
+  return <Bar data={data} options={options} />
 }

@@ -107,7 +107,7 @@ export default function Home() {
       </div>
 
       <div className="horizontal-scroll">
-      <table className="table table-bordered responsive-table">
+      <table className="table table-striped responsive-table">
         <thead>
           <tr>
             <th>Monat</th>

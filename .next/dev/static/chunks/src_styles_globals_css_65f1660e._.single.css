@@ -64,14 +64,120 @@
 
 @media (min-width: 992px) {
   .responsive-table th:first-child, .responsive-table td:first-child {
+    background-color: var(--table-bg);
     z-index: 2;
-    background: #fff;
     position: sticky;
     left: 0;
   }
 
-  .responsive-table th:first-child {
+  .responsive-table th:last-child, .responsive-table td:last-child {
+    background-color: var(--table-bg);
+    z-index: 2;
+    text-align: center;
+    white-space: nowrap;
+    position: sticky;
+    right: 0;
+  }
+
+  .responsive-table thead th:first-child, .responsive-table thead th:last-child {
     z-index: 3;
+  }
+}
+
+:root {
+  --bg-color: #f8f9fa;
+  --text-color: #212529;
+  --card-bg: #fff;
+  --border-color: #dee2e6;
+  --table-bg: #fff;
+  --muted-text: #6c757d;
+}
+
+[data-theme="dark"] {
+  --bg-color: #121212;
+  --text-color: #e9ecef;
+  --card-bg: #1e1e1e;
+  --border-color: #2c2c2c;
+  --table-bg: #1e1e1e;
+  --muted-text: #adb5bd;
+}
+
+[data-theme="dark"] .alert-info {
+  color: #e9ecef;
+  background-color: #1c2a33;
+  border-color: #0dcaf0;
+}
+
+[data-theme="dark"] .alert-danger {
+  color: #f8d7da;
+  background-color: #2a1c1c;
+  border-color: #dc3545;
+}
+
+[data-theme="dark"] .MuiIconButton-root {
+  color: var(--text-color);
+}
+
+[data-theme="dark"] .MuiIconButton-colorPrimary {
+  color: #4dabf7;
+}
+
+[data-theme="dark"] .MuiIconButton-colorError {
+  color: #ff6b6b;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+}
+
+.card {
+  background-color: var(--card-bg);
+  border-color: var(--border-color);
+}
+
+.table > :not(caption) > * > * {
+  background-color: var(--table-bg);
+  color: var(--text-color);
+}
+
+.table th, .table td {
+  border-color: var(--border-color);
+}
+
+.text-muted {
+  color: var(--muted-text) !important;
+}
+
+.modal-content {
+  background-color: var(--card-bg);
+  color: var(--text-color);
+}
+
+.modal-header, .modal-footer {
+  border-color: var(--border-color);
+}
+
+.form-control, .form-select {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  border-color: var(--border-color);
+}
+
+.form-control::placeholder {
+  color: var(--muted-text);
+}
+
+.form-control:focus, .form-select:focus {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  box-shadow: none;
+  border-color: #0d6efd;
+}
+
+@media (min-width: 992px) {
+  .responsive-table th:first-child, .responsive-table td:first-child {
+    background: var(--table-bg);
   }
 }
 

@@ -62,7 +62,7 @@ export default function Transactions() {
       {/* Einnahmen */}
       <h3>Einnahmen</h3>
       <div className="horizontal-scroll">
-      <table className="table table-bordered responsive-table">
+      <table className="table table-striped responsive-table">
         <thead>
           <tr>
             <th>Titel</th>

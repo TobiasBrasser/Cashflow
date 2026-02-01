@@ -1,6 +1,6 @@
 import Link from 'next/link';
 
-export default function Navigation() {
+export default function Navigation({ theme, onToggleTheme }) {
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
       <div className="container">
@@ -22,6 +22,12 @@ export default function Navigation() {
             </li>
           </ul>
         </div>
+        <button
+          className="btn btn-outline-light btn-sm"
+          onClick={onToggleTheme}
+        >
+          {theme === 'light' ? '🌙 Dark' : '☀️ Light'}
+        </button>
       </div>
     </nav>
   )

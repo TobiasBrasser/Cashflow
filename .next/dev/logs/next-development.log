@@ -1,2 +1,131 @@
-[00:00:00.494] Server  LOG     ✓ Ready in 321ms
-[00:00:13.703] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[00:00:00.530] Server  LOG     ✓ Ready in 355ms
+[00:00:04.091] Server  ERROR   ReferenceError: useState is not defined
+[00:00:04.093] Server  ERROR   ⨯ ReferenceError: useState is not defined
+[00:00:04.094] Server  ERROR   ⨯ ReferenceError: useState is not defined
+[00:00:04.676] Server  ERROR   ReferenceError: useState is not defined
+[00:00:04.680] Server  ERROR   ⨯ ReferenceError: useState is not defined
+[00:00:04.683] Server  ERROR   ⨯ ReferenceError: useState is not defined
+[00:00:04.781] Browser ERROR   uncaughtError: ReferenceError: useState is not defined
+[00:00:20.336] Server  WARN    ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+[00:00:20.336] Server  WARN    ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+[00:00:20.455] Browser ERROR   uncaughtError: Error: Could not parse module '[project]/src/pages/_app.jsx'
+
+Expected ',', got 'export'
+[00:00:20.591] Browser ERROR   ./src/pages/_app.jsx:8:1
+Parsing ecmascript source code failed
+   6 | import use
+   7 |
+>  8 | export default function App({ Component, pageProps }) {
+     | ^^^^^^
+   9 |     const [theme, setTheme] = useState('light');
+  10 |
+  11 |     useEffect(() => {
+
+Expected ',', got 'export'
+[00:00:20.591] Browser ERROR   ./src/pages/_app.jsx:8:1
+Parsing ecmascript source code failed
+   6 | import use
+   7 |
+>  8 | export default function App({ Component, pageProps }) {
+     | ^^^^^^
+   9 |     const [theme, setTheme] = useState('light');
+  10 |
+  11 |     useEffect(() => {
+
+Expected ',', got 'export'
+[00:00:20.591] Browser ERROR   ./src/pages/_app.jsx:8:1
+Parsing ecmascript source code failed
+   6 | import use
+   7 |
+>  8 | export default function App({ Component, pageProps }) {
+     | ^^^^^^
+   9 |     const [theme, setTheme] = useState('light');
+  10 |
+  11 |     useEffect(() => {
+
+Expected ',', got 'export'
+[00:00:20.591] Browser ERROR   ./src/pages/_app.jsx:8:1
+Parsing ecmascript source code failed
+   6 | import use
+   7 |
+>  8 | export default function App({ Component, pageProps }) {
+     | ^^^^^^
+   9 |     const [theme, setTheme] = useState('light');
+  10 |
+  11 |     useEffect(() => {
+
+Expected ',', got 'export'
+[00:00:22.477] Server  WARN    ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+[00:00:22.478] Server  WARN    ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+[00:00:22.481] Server  WARN    ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+[00:00:22.481] Server  WARN    ⚠ Fast Refresh had to perform a full reload when ./src/pages/_app.jsx changed. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+[00:00:22.481] Server  WARN    ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+[00:00:22.506] Server  ERROR   ReferenceError: useEffect is not defined
+[00:00:22.508] Server  ERROR   ⨯ ReferenceError: useEffect is not defined
+[00:00:22.509] Server  ERROR   ⨯ ReferenceError: useEffect is not defined
+[00:00:22.534] Server  ERROR   ReferenceError: useEffect is not defined
+[00:00:22.535] Server  ERROR   ⨯ ReferenceError: useEffect is not defined
+[00:00:22.535] Server  ERROR   ⨯ ReferenceError: useEffect is not defined
+[00:00:22.586] Browser ERROR   uncaughtError: ReferenceError: useEffect is not defined
+[00:00:33.052] Server  WARN    ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+[00:00:33.058] Server  WARN    ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+[00:00:33.092] Server  ERROR   ReferenceError: onToggleTheme is not defined
+[00:00:33.094] Server  ERROR   ⨯ ReferenceError: onToggleTheme is not defined
+[00:00:33.094] Server  ERROR   ⨯ ReferenceError: onToggleTheme is not defined
+[00:00:33.117] Server  ERROR   ReferenceError: onToggleTheme is not defined
+[00:00:33.118] Server  ERROR   ⨯ ReferenceError: onToggleTheme is not defined
+[00:00:33.119] Server  ERROR   ⨯ ReferenceError: onToggleTheme is not defined
+[00:00:33.152] Server  LOG     ✓ Compiled in 11ms
+[00:00:33.170] Browser ERROR   uncaughtError: ReferenceError: onToggleTheme is not defined
+[00:01:35.610] Server  LOG     ✓ Compiled in 8ms
+[00:01:36.011] Browser ERROR   ./src/components/Navigation.jsx:3:37
+Parsing ecmascript source code failed
+  1 | import Link from 'next/link';
+  2 |
+> 3 | export default function Navigation({§}) {
+    |                                     ^
+  4 |   return (
+  5 |     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+  6 |       <div className="container">
+
+Unexpected character '§'
+
+Import trace:
+  SSR:
+    ./src/components/Navigation.jsx
+    ./src/pages/_app.jsx
+[00:01:37.751] Server  WARN    ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+[00:01:37.754] Server  WARN    ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+[00:01:37.797] Server  LOG     ✓ Compiled in 4ms
+[00:02:37.938] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[00:03:59.407] Server  LOG     ✓ Compiled in 7ms
+[00:04:02.966] Server  LOG     ✓ Compiled in 16ms
+[00:04:04.011] Browser LOG     Refreshing page data due to server-side change
+[00:04:04.011] Browser ERROR   ./src/pages/_app.jsx:25:33
+Parsing ecmascript source code failed
+  23 |     return (
+  24 |         <>
+> 25 |             <Navigation theme= />
+     |                                 ^
+  26 |             <main className="container my-4">
+  27 |                 <Component {...pageProps} />
+  28 |             </main>
+
+Expression expected
+[00:04:04.171] Server  LOG     ✓ Compiled in 11ms
+[00:04:05.011] Browser LOG     Refreshing page data due to server-side change
+[00:06:25.621] Server  LOG     ✓ Compiled in 13ms
+[00:06:27.005] Server  LOG     ✓ Compiled in 5ms
+[00:06:29.937] Server  LOG     ✓ Compiled in 8ms
+[00:06:49.754] Server  LOG     ✓ Compiled in 8ms
+[00:06:57.795] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[00:07:42.344] Server  LOG     ✓ Compiled in 12ms
+[00:07:49.600] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[00:09:46.034] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[00:12:03.801] Server  LOG     ✓ Compiled in 10ms
+[00:13:03.998] Server  LOG     ✓ Compiled in 9ms
+[00:15:35.956] Server  LOG     ✓ Compiled in 7ms
+[00:17:01.946] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[00:17:43.919] Server  LOG     ✓ Compiled in 18ms
+[00:17:56.401] Server  LOG     ✓ Compiled in 14ms
+[00:17:59.424] Server  LOG     ✓ Compiled in 17ms
