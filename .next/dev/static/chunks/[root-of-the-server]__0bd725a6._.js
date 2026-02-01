@@ -471,20 +471,8 @@ __turbopack_context__.s([
 ]);
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/react/jsx-dev-runtime.js [client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$index$2e$js__$5b$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/react/index.js [client] (ecmascript)");
-(()=>{
-    const e = new Error("Cannot find module '../components/charts/MonthlyCashflowChart'");
-    e.code = 'MODULE_NOT_FOUND';
-    throw e;
-})();
-(()=>{
-    const e = new Error("Cannot find module '../components/charts/ExpenseCategoryChart'");
-    e.code = 'MODULE_NOT_FOUND';
-    throw e;
-})();
 ;
 var _s = __turbopack_context__.k.signature();
-;
-;
 ;
 const getMonthKey = (date)=>{
     const d = new Date(date);
@@ -500,34 +488,48 @@ const formatMonth = (key)=>{
 function Home() {
     _s();
     const [transactions, setTransactions] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$index$2e$js__$5b$client$5d$__$28$ecmascript$29$__["useState"])([]);
+    const [budget, setBudget] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$index$2e$js__$5b$client$5d$__$28$ecmascript$29$__["useState"])(0);
     (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$index$2e$js__$5b$client$5d$__$28$ecmascript$29$__["useEffect"])({
         "Home.useEffect": ()=>{
-            const stored = JSON.parse(localStorage.getItem('cashflowr-transactions')) || [];
-            setTransactions(stored);
+            const loadData = {
+                "Home.useEffect.loadData": ()=>{
+                    const storedTransactions = JSON.parse(localStorage.getItem('cashflowr-transactions')) || [];
+                    setTransactions(storedTransactions);
+                    const storedBudget = localStorage.getItem('cashflowr-budget');
+                    if (storedBudget) setBudget(Number(storedBudget));
+                }
+            }["Home.useEffect.loadData"];
+            loadData();
+            window.addEventListener('storage', loadData);
+            return ({
+                "Home.useEffect": ()=>window.removeEventListener('storage', loadData)
+            })["Home.useEffect"];
         }
     }["Home.useEffect"], []);
+    const handleBudgetChange = (value)=>{
+        const numericValue = Number(value);
+        setBudget(numericValue);
+        localStorage.setItem('cashflowr-budget', numericValue);
+    };
     const monthlyOverview = transactions.reduce((acc, t)=>{
         const month = getMonthKey(t.date);
-        if (!acc[month]) {
-            acc[month] = {
-                income: 0,
-                expense: 0
-            };
-        }
-        if (t.type === 'income') {
-            acc[month].income += t.amount;
-        } else {
-            acc[month].expense += t.amount;
-        }
+        if (!acc[month]) acc[month] = {
+            income: 0,
+            expense: 0
+        };
+        if (t.type === 'income') acc[month].income += t.amount;
+        else acc[month].expense += t.amount;
         return acc;
     }, {});
+    const currentMonthKey = getMonthKey(new Date());
+    const currentMonthData = monthlyOverview[currentMonthKey];
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["Fragment"], {
         children: [
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h1", {
                 children: "Monatsübersicht"
             }, void 0, false, {
                 fileName: "[project]/src/pages/index.jsx",
-                lineNumber: 45,
+                lineNumber: 56,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -535,142 +537,288 @@ function Home() {
                 children: "Behalte deine Einnahmen und Ausgaben im Überblick."
             }, void 0, false, {
                 fileName: "[project]/src/pages/index.jsx",
-                lineNumber: 46,
+                lineNumber: 57,
                 columnNumber: 7
             }, this),
-            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("table", {
-                className: "table table-bordered mt-4",
-                children: [
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("thead", {
-                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
+            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                className: "card mb-4",
+                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                    className: "card-body",
+                    children: [
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h5", {
+                            className: "card-title",
+                            children: "Monatliches Budget"
+                        }, void 0, false, {
+                            fileName: "[project]/src/pages/index.jsx",
+                            lineNumber: 63,
+                            columnNumber: 11
+                        }, this),
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                            className: "row align-items-center",
                             children: [
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
-                                    children: "Monat"
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                    className: "col-md-4",
+                                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
+                                        type: "number",
+                                        className: "form-control",
+                                        placeholder: "Budget in CHF",
+                                        value: budget || '',
+                                        onChange: (e)=>handleBudgetChange(e.target.value)
+                                    }, void 0, false, {
+                                        fileName: "[project]/src/pages/index.jsx",
+                                        lineNumber: 66,
+                                        columnNumber: 15
+                                    }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/src/pages/index.jsx",
-                                    lineNumber: 53,
+                                    lineNumber: 65,
                                     columnNumber: 13
                                 }, this),
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
-                                    children: "Einnahmen (CHF)"
-                                }, void 0, false, {
+                                currentMonthData && budget > 0 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                    className: "col-md-8 mt-3 mt-md-0",
+                                    children: [
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("strong", {
+                                            children: "Einnahmen:"
+                                        }, void 0, false, {
+                                            fileName: "[project]/src/pages/index.jsx",
+                                            lineNumber: 77,
+                                            columnNumber: 17
+                                        }, this),
+                                        ' ',
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                            className: "text-success",
+                                            children: [
+                                                currentMonthData.income.toFixed(2),
+                                                " CHF"
+                                            ]
+                                        }, void 0, true, {
+                                            fileName: "[project]/src/pages/index.jsx",
+                                            lineNumber: 78,
+                                            columnNumber: 17
+                                        }, this),
+                                        ' ',
+                                        "| ",
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("strong", {
+                                            children: "Ausgaben:"
+                                        }, void 0, false, {
+                                            fileName: "[project]/src/pages/index.jsx",
+                                            lineNumber: 81,
+                                            columnNumber: 19
+                                        }, this),
+                                        ' ',
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                            className: "text-danger",
+                                            children: [
+                                                currentMonthData.expense.toFixed(2),
+                                                " CHF"
+                                            ]
+                                        }, void 0, true, {
+                                            fileName: "[project]/src/pages/index.jsx",
+                                            lineNumber: 82,
+                                            columnNumber: 17
+                                        }, this),
+                                        ' ',
+                                        "| ",
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("strong", {
+                                            children: "Verbleibend:"
+                                        }, void 0, false, {
+                                            fileName: "[project]/src/pages/index.jsx",
+                                            lineNumber: 85,
+                                            columnNumber: 19
+                                        }, this),
+                                        ' ',
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                            className: budget - currentMonthData.expense >= 0 ? 'text-success' : 'text-danger',
+                                            children: [
+                                                (budget - currentMonthData.expense).toFixed(2),
+                                                " CHF"
+                                            ]
+                                        }, void 0, true, {
+                                            fileName: "[project]/src/pages/index.jsx",
+                                            lineNumber: 86,
+                                            columnNumber: 17
+                                        }, this)
+                                    ]
+                                }, void 0, true, {
                                     fileName: "[project]/src/pages/index.jsx",
-                                    lineNumber: 54,
-                                    columnNumber: 13
-                                }, this),
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
-                                    children: "Ausgaben (CHF)"
-                                }, void 0, false, {
-                                    fileName: "[project]/src/pages/index.jsx",
-                                    lineNumber: 55,
-                                    columnNumber: 13
-                                }, this),
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
-                                    children: "Saldo (CHF)"
-                                }, void 0, false, {
-                                    fileName: "[project]/src/pages/index.jsx",
-                                    lineNumber: 56,
-                                    columnNumber: 13
+                                    lineNumber: 76,
+                                    columnNumber: 15
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/pages/index.jsx",
-                            lineNumber: 52,
+                            lineNumber: 64,
                             columnNumber: 11
+                        }, this),
+                        currentMonthData && budget > 0 && currentMonthData.expense > budget && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                            className: "alert alert-danger mt-3",
+                            children: "⚠️ Budget für diesen Monat überschritten!"
+                        }, void 0, false, {
+                            fileName: "[project]/src/pages/index.jsx",
+                            lineNumber: 102,
+                            columnNumber: 15
                         }, this)
-                    }, void 0, false, {
-                        fileName: "[project]/src/pages/index.jsx",
-                        lineNumber: 51,
-                        columnNumber: 9
-                    }, this),
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tbody", {
-                        children: Object.entries(monthlyOverview).map(([month, data])=>{
-                            const saldo = data.income - data.expense;
-                            return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
+                    ]
+                }, void 0, true, {
+                    fileName: "[project]/src/pages/index.jsx",
+                    lineNumber: 62,
+                    columnNumber: 9
+                }, this)
+            }, void 0, false, {
+                fileName: "[project]/src/pages/index.jsx",
+                lineNumber: 61,
+                columnNumber: 7
+            }, this),
+            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                className: "horizontal-scroll",
+                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("table", {
+                    className: "table table-bordered responsive-table",
+                    children: [
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("thead", {
+                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
                                 children: [
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
-                                        children: formatMonth(month)
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
+                                        children: "Monat"
                                     }, void 0, false, {
                                         fileName: "[project]/src/pages/index.jsx",
-                                        lineNumber: 65,
-                                        columnNumber: 17
+                                        lineNumber: 113,
+                                        columnNumber: 13
                                     }, this),
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
-                                        className: "text-success",
-                                        children: [
-                                            "+ ",
-                                            data.income.toFixed(2)
-                                        ]
-                                    }, void 0, true, {
-                                        fileName: "[project]/src/pages/index.jsx",
-                                        lineNumber: 66,
-                                        columnNumber: 17
-                                    }, this),
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
-                                        className: "text-danger",
-                                        children: [
-                                            "- ",
-                                            data.expense.toFixed(2)
-                                        ]
-                                    }, void 0, true, {
-                                        fileName: "[project]/src/pages/index.jsx",
-                                        lineNumber: 69,
-                                        columnNumber: 17
-                                    }, this),
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
-                                        className: saldo >= 0 ? 'text-success' : 'text-danger',
-                                        children: saldo.toFixed(2)
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
+                                        children: "Einnahmen (CHF)"
                                     }, void 0, false, {
                                         fileName: "[project]/src/pages/index.jsx",
-                                        lineNumber: 72,
-                                        columnNumber: 17
+                                        lineNumber: 114,
+                                        columnNumber: 13
+                                    }, this),
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
+                                        children: "Ausgaben (CHF)"
+                                    }, void 0, false, {
+                                        fileName: "[project]/src/pages/index.jsx",
+                                        lineNumber: 115,
+                                        columnNumber: 13
+                                    }, this),
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
+                                        children: "Saldo (CHF)"
+                                    }, void 0, false, {
+                                        fileName: "[project]/src/pages/index.jsx",
+                                        lineNumber: 116,
+                                        columnNumber: 13
+                                    }, this),
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
+                                        className: "col-secondary",
+                                        children: "Budgetstatus"
+                                    }, void 0, false, {
+                                        fileName: "[project]/src/pages/index.jsx",
+                                        lineNumber: 117,
+                                        columnNumber: 13
                                     }, this)
                                 ]
-                            }, month, true, {
+                            }, void 0, true, {
                                 fileName: "[project]/src/pages/index.jsx",
-                                lineNumber: 64,
-                                columnNumber: 15
-                            }, this);
-                        })
-                    }, void 0, false, {
-                        fileName: "[project]/src/pages/index.jsx",
-                        lineNumber: 59,
-                        columnNumber: 9
-                    }, this)
-                ]
-            }, void 0, true, {
-                fileName: "[project]/src/pages/index.jsx",
-                lineNumber: 50,
-                columnNumber: 7
-            }, this),
-            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
-                className: "mt-5",
-                children: "Monatlicher Cashflow"
+                                lineNumber: 112,
+                                columnNumber: 11
+                            }, this)
+                        }, void 0, false, {
+                            fileName: "[project]/src/pages/index.jsx",
+                            lineNumber: 111,
+                            columnNumber: 9
+                        }, this),
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tbody", {
+                            children: Object.entries(monthlyOverview).map(([month, data])=>{
+                                const saldo = data.income - data.expense;
+                                const remaining = budget - data.expense;
+                                const isOverBudget = budget > 0 && remaining < 0;
+                                return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
+                                    children: [
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
+                                            children: formatMonth(month)
+                                        }, void 0, false, {
+                                            fileName: "[project]/src/pages/index.jsx",
+                                            lineNumber: 128,
+                                            columnNumber: 17
+                                        }, this),
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
+                                            className: "text-success",
+                                            children: [
+                                                "+ ",
+                                                data.income.toFixed(2)
+                                            ]
+                                        }, void 0, true, {
+                                            fileName: "[project]/src/pages/index.jsx",
+                                            lineNumber: 129,
+                                            columnNumber: 17
+                                        }, this),
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
+                                            className: "text-danger",
+                                            children: [
+                                                "- ",
+                                                data.expense.toFixed(2)
+                                            ]
+                                        }, void 0, true, {
+                                            fileName: "[project]/src/pages/index.jsx",
+                                            lineNumber: 130,
+                                            columnNumber: 17
+                                        }, this),
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
+                                            className: saldo >= 0 ? 'text-success' : 'text-danger',
+                                            children: saldo.toFixed(2)
+                                        }, void 0, false, {
+                                            fileName: "[project]/src/pages/index.jsx",
+                                            lineNumber: 131,
+                                            columnNumber: 17
+                                        }, this),
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
+                                            className: "col-secondary",
+                                            children: budget > 0 ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                className: `badge ${isOverBudget ? 'bg-danger' : 'bg-success'}`,
+                                                children: isOverBudget ? `❌ Überschritten (-${Math.abs(remaining).toFixed(2)} CHF)` : `✅ OK (+${remaining.toFixed(2)} CHF)`
+                                            }, void 0, false, {
+                                                fileName: "[project]/src/pages/index.jsx",
+                                                lineNumber: 136,
+                                                columnNumber: 21
+                                            }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                className: "text-muted",
+                                                children: "–"
+                                            }, void 0, false, {
+                                                fileName: "[project]/src/pages/index.jsx",
+                                                lineNumber: 148,
+                                                columnNumber: 21
+                                            }, this)
+                                        }, void 0, false, {
+                                            fileName: "[project]/src/pages/index.jsx",
+                                            lineNumber: 134,
+                                            columnNumber: 17
+                                        }, this)
+                                    ]
+                                }, month, true, {
+                                    fileName: "[project]/src/pages/index.jsx",
+                                    lineNumber: 127,
+                                    columnNumber: 15
+                                }, this);
+                            })
+                        }, void 0, false, {
+                            fileName: "[project]/src/pages/index.jsx",
+                            lineNumber: 120,
+                            columnNumber: 9
+                        }, this)
+                    ]
+                }, void 0, true, {
+                    fileName: "[project]/src/pages/index.jsx",
+                    lineNumber: 110,
+                    columnNumber: 7
+                }, this)
             }, void 0, false, {
                 fileName: "[project]/src/pages/index.jsx",
-                lineNumber: 81,
+                lineNumber: 109,
                 columnNumber: 7
             }, this),
-            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(MonthlyChart, {
-                monthlyData: monthlyOverview
+            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                className: "alert alert-info",
+                children: "Diagramme und Zusammenfassungen folgen hier."
             }, void 0, false, {
                 fileName: "[project]/src/pages/index.jsx",
-                lineNumber: 82,
-                columnNumber: 7
-            }, this),
-            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
-                className: "mt-5",
-                children: "Ausgaben nach Kategorien"
-            }, void 0, false, {
-                fileName: "[project]/src/pages/index.jsx",
-                lineNumber: 84,
-                columnNumber: 7
-            }, this),
-            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(ExpenseCategoryChart, {
-                expenses: transactions.filter((t)=>t.type === 'expense')
-            }, void 0, false, {
-                fileName: "[project]/src/pages/index.jsx",
-                lineNumber: 85,
+                lineNumber: 157,
                 columnNumber: 7
             }, this),
             transactions.length === 0 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -678,13 +826,13 @@ function Home() {
                 children: "Noch keine Transaktionen vorhanden."
             }, void 0, false, {
                 fileName: "[project]/src/pages/index.jsx",
-                lineNumber: 89,
+                lineNumber: 162,
                 columnNumber: 9
             }, this)
         ]
     }, void 0, true);
 }
-_s(Home, "tSC852gg/pAfbHr6jYEePbawnUU=");
+_s(Home, "PsOI0LK7qiXhOnYdshFK7K3csME=");
 _c = Home;
 var _c;
 __turbopack_context__.k.register(_c, "Home");

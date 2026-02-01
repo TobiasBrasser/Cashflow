@@ -13360,4 +13360,60 @@ textarea.form-control-lg {
   display: flex;
 }
 
+.horizontal-scroll {
+  -webkit-overflow-scrolling: touch;
+  width: 100%;
+  max-width: 100%;
+  overflow: auto visible;
+}
+
+.card, .card-body, .row, .container, .container-fluid {
+  overflow-x: visible;
+}
+
+@media (max-width: 768px) {
+  .col-secondary {
+    display: none;
+  }
+}
+
+.responsive-table th:first-child, .responsive-table td:first-child {
+  position: static;
+}
+
+.responsive-table th, .responsive-table td {
+  white-space: nowrap;
+  overflow: visible;
+}
+
+.responsive-table td {
+  font-variant-numeric: tabular-nums;
+}
+
+.responsive-table {
+  table-layout: auto;
+  min-width: 1000px;
+}
+
+.responsive-table th:first-child, .responsive-table td:first-child {
+  width: 200px;
+}
+
+.responsive-table th:nth-child(2), .responsive-table td:nth-child(2), .responsive-table th:nth-child(3), .responsive-table td:nth-child(3) {
+  width: 180px;
+}
+
+@media (min-width: 992px) {
+  .responsive-table th:first-child, .responsive-table td:first-child {
+    z-index: 2;
+    background: #fff;
+    position: sticky;
+    left: 0;
+  }
+
+  .responsive-table th:first-child {
+    z-index: 3;
+  }
+}
+
 /*# sourceMappingURL=_c0e86af6._.css.map*/

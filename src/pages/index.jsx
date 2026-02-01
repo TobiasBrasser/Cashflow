@@ -106,14 +106,15 @@ export default function Home() {
         </div>
       </div>
 
-      <table className="table table-bordered mt-4">
+      <div className="horizontal-scroll">
+      <table className="table table-bordered responsive-table">
         <thead>
           <tr>
             <th>Monat</th>
             <th>Einnahmen (CHF)</th>
             <th>Ausgaben (CHF)</th>
             <th>Saldo (CHF)</th>
-            <th>Budgetstatus</th>
+            <th className="col-secondary">Budgetstatus</th>
           </tr>
         </thead>
         <tbody>
@@ -130,7 +131,7 @@ export default function Home() {
                 <td className={saldo >= 0 ? 'text-success' : 'text-danger'}>
                   {saldo.toFixed(2)}
                 </td>
-                <td>
+                <td className="col-secondary">
                   {budget > 0 ? (
                     <span
                       className={`badge ${
@@ -152,7 +153,7 @@ export default function Home() {
           })}
         </tbody>
       </table>
-
+      </div>
       <div className="alert alert-info">
         Diagramme und Zusammenfassungen folgen hier.
       </div>

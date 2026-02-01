@@ -17,3 +17,74 @@
     gap: 1rem;
     width: 25%;
 }
+
+.horizontal-scroll {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: visible;
+  -webkit-overflow-scrolling: touch;
+}
+
+.card,
+.card-body,
+.row,
+.container,
+.container-fluid {
+  overflow-x: visible;
+}
+
+
+@media (max-width: 768px) {
+  .col-secondary {
+    display: none;
+  }
+}
+
+
+.responsive-table th:first-child,
+.responsive-table td:first-child {
+  position: static;
+}
+
+.responsive-table th,
+.responsive-table td {
+  white-space: nowrap;
+  overflow: visible;
+}
+
+.responsive-table td {
+  font-variant-numeric: tabular-nums;
+}
+
+.responsive-table {
+  min-width: 1000px;
+  table-layout: auto;
+}
+
+.responsive-table th:nth-child(1),
+.responsive-table td:nth-child(1) {
+  width: 200px;
+}
+
+.responsive-table th:nth-child(2),
+.responsive-table td:nth-child(2),
+.responsive-table th:nth-child(3),
+.responsive-table td:nth-child(3) {
+  width: 180px;
+}
+
+
+@media (min-width: 992px) {
+  .responsive-table th:first-child,
+  .responsive-table td:first-child {
+    position: sticky;
+    left: 0;
+    background: #fff;
+    z-index: 2;
+  }
+
+  .responsive-table th:first-child {
+    z-index: 3;
+  }
+}

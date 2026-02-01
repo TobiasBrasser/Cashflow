@@ -61,12 +61,13 @@ export default function Transactions() {
 
       {/* Einnahmen */}
       <h3>Einnahmen</h3>
-      <table className="table table-striped mb-5">
+      <div className="horizontal-scroll">
+      <table className="table table-bordered responsive-table">
         <thead>
           <tr>
             <th>Titel</th>
-            <th>Kategorie</th>
-            <th>Beschreibung</th>
+            <th className="col-secondary">Kategorie</th>
+            <th className="col-secondary">Beschreibung</th>
             <th>Betrag (CHF)</th>
             <th>Datum</th>
             <th>Aktionen</th>
@@ -76,8 +77,8 @@ export default function Transactions() {
           {incomes.map(t => (
             <tr key={t.id}>
               <td>{t.title}</td>
-              <td>{t.category || '-'}</td>
-              <td>{t.description}</td>
+              <td className="col-secondary">{t.category || '-'}</td>
+              <td className="col-secondary">{t.description}</td>
               <td className="text-success">+ {t.amount.toFixed(2)}</td>
               <td>{new Date(t.date).toLocaleDateString()}</td>
               <td>
@@ -101,12 +102,13 @@ export default function Transactions() {
 
       {/* Ausgaben */}
       <h3>Ausgaben</h3>
-      <table className="table table-striped">
+      <div className="horizontal-scroll">
+      <table className="table table-striped responsive-table">
         <thead>
           <tr>
             <th>Titel</th>
-            <th>Kategorie</th>
-            <th>Beschreibung</th>
+            <th className="col-secondary">Kategorie</th>
+            <th className="col-secondary">Beschreibung</th>
             <th>Betrag (CHF)</th>
             <th>Datum</th>
             <th>Aktionen</th>
@@ -116,8 +118,8 @@ export default function Transactions() {
           {expenses.map(t => (
             <tr key={t.id}>
               <td>{t.title}</td>
-              <td>{t.category || '-'}</td>
-              <td>{t.description}</td>
+              <td className="col-secondary">{t.category || '-'}</td>
+              <td className="col-secondary">{t.description}</td>
               <td className="text-danger">- {t.amount.toFixed(2)}</td>
               <td>{new Date(t.date).toLocaleDateString()}</td>
               <td>
@@ -138,6 +140,8 @@ export default function Transactions() {
           ))}
         </tbody>
       </table>
+      </div>
+      </div>
     </>
   )
 }
